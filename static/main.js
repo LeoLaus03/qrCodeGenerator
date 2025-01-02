@@ -5,7 +5,7 @@ function generateQRCode() {
     let inputText = document.getElementById("linkInput").value;
 
     // CORS Header hinzufügen, falls Flask über Webview läuft
-    fetch('https://qrcodegenerator-wvc1.onrender.com/', {
+    fetch('https://qrcodegenerator-wvc1.onrender.com/generate_qr_img', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ function downloadQRCodeAsSTL() {
     let inputText = document.getElementById("linkInput").value;
 
     // CORS Header hinzufügen, falls Flask über Webview läuft
-    fetch('https://qrcodegenerator-wvc1.onrender.com/', {
+    fetch('https://qrcodegenerator-wvc1.onrender.com/save_file', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
