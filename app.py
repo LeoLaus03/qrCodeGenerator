@@ -6,10 +6,8 @@ from stl import mesh
 import webview
 import base64
 import threading
-from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
 
 # Route für die HTML-Seite
 @app.route('/')
