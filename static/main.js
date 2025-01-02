@@ -2,7 +2,9 @@ document.getElementById("qrCodeErstellenButton").addEventListener("click", gener
 document.getElementById("qrCodeDownloadButton").addEventListener("click", downloadQRCodeAsSTL);
 
 function generateQRCode() {
-    let inputText = document.getElementById("linkInput").value
+    let inputText = document.getElementById("linkInput").value;
+
+    // CORS Header hinzufügen, falls Flask über Webview läuft
     fetch('http://127.0.0.1:5000/generate_qr_img', {
         method: 'POST',
         headers: {
@@ -14,7 +16,7 @@ function generateQRCode() {
         .then(data => {
             console.log(data.message);
 
-            const imgElement = document.querySelector("#qrCodeIMG")
+            const imgElement = document.querySelector("#qrCodeIMG");
             if (!imgElement) {
                 let newIMGElement = document.createElement("img");
                 newIMGElement.id = "qrCodeIMG";
@@ -23,13 +25,14 @@ function generateQRCode() {
             } else {
                 imgElement.src = data.qr_url + '?t=' + new Date().getTime();
             }
-            
         })
         .catch(error => console.error('Error:', error));
 }
 
 function downloadQRCodeAsSTL() {
-    let inputText = document.getElementById("linkInput").value
+    let inputText = document.getElementById("linkInput").value;
+
+    // CORS Header hinzufügen, falls Flask über Webview läuft
     fetch('http://127.0.0.1:5000/generate_qr_stl', {
         method: 'POST',
         headers: {
